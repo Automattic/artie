@@ -1,0 +1,28 @@
+{
+  "name": "artie-monorepo",
+  "private": true,
+  "description": "Artie Monorepo",
+  "scripts": {
+    "dev:cli": "pnpm --filter @artie/cli dev",
+    "build:cli": "pnpm --filter @artie/cli build",
+    "start:cli": "pnpm --filter @artie/cli start",
+    "dev:core": "pnpm --filter @artie/core dev",
+    "build:core": "pnpm --filter @artie/core build",
+    "build": "pnpm run build:core && pnpm run build:cli",
+    "clean": "pnpm --parallel --filter \"./packages/*\" run clean && rimraf node_modules",
+    "test:core": "pnpm --filter @artie/core test",
+    "test:cli": "pnpm --filter @artie/cli test",
+    "test": "pnpm run test:core && pnpm run test:cli"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "rimraf": "^5.0.5",
+    "tsc-alias": "^1.8.8",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1",
+    "@vitest/coverage-v8": "^1.3.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
